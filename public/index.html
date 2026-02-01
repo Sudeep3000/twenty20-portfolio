@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="auth-card">
+    <h1>My Portfolio</h1>
+    <p class="subtitle">Login or create an account</p>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showLogin()">Login</button>
+      <button class="tab" onclick="showRegister()">Register</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="loginBox">
+      <input type="email" id="loginEmail" placeholder="Email" />
+      <input type="password" id="loginPassword" placeholder="Password" />
+      <button class="primary" onclick="login()">Login</button>
+      <p class="msg" id="loginMsg"></p>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="registerBox" class="hidden">
+      <input type="email" id="regEmail" placeholder="Email" />
+      <input type="password" id="regPassword" placeholder="Password" />
+      <button class="primary" onclick="register()">Register</button>
+      <p class="msg" id="regMsg"></p>
+    </div>
+
+  </div>
+
+<script src="/script.js"></script>
+</body>
+</html>

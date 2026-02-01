@@ -1,0 +1,9 @@
+{
+  "name": "twenty20-portfolio",
+  "version": "1.0.0",
+  "description": "Login and Portfolio web app for Twenty20 Systems assessment",
+  "private": true,
+  "dependencies": {
+    "mongoose": "^8.0.0"
+  }
+}

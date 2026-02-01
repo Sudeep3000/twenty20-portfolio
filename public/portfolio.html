@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="auth-card">
+    <h1>My Portfolio</h1>
+    <p id="userEmail"></p>
+
+    <hr>
+
+    <h2>About Me</h2>
+    <p>I am a passionate web developer interested in full-stack development.</p>
+
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>React, Node.js</li>
+      <li>MongoDB</li>
+      <li>Python, Java</li>
+    </ul>
+
+    <h2>Projects</h2>
+    <ol>
+      <li>SmartDoc Automation</li>
+      <li>AI-based Plagiarism Checker</li>
+      <li>Personal Portfolio Website</li>
+    </ol>
+
+    <button class="primary" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      window.location.href = "/";
+    } else {
+      document.getElementById("userEmail").innerText =
+        "Logged in as: " + user.email;
+    }
+  </script>
+
+</body>
+</html>
