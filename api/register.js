@@ -9,21 +9,26 @@ const User =
   mongoose.models.User || mongoose.model("User", UserSchema);
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
-
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-
-    const { email, password } = JSON.parse(req.body);
-
-    if (!email || !password) {
-      return res.status(400).json({ message: "All fields are required" });
+    if (req.method !== "POST") {
+      return res.status(405).json({ message: "Method not allowed" });
     }
 
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    await mongoose.connect(process.env.MONGO_URI);
+
+    let body = req.body;
+    if (typeof body === "string") {
+      body = JSON.parse(body);
+    }
+
+    const { email, password } = body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "All fields required" });
+    }
+
+    const exists = await User.findOne({ email });
+    if (exists) {
       return res.status(400).json({ message: "User already exists" });
     }
 
@@ -31,6 +36,7 @@ export default async function handler(req, res) {
 
     res.status(200).json({ message: "Registration successful" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       message: "Server error",
       error: error.message,
